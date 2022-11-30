@@ -83,7 +83,8 @@ class SliderWidget extends Widget_Base {
         $settings = $this->get_settings_for_display();
         if( !empty($settings['ah-slides']) ): ?>
         <!-- Swiper -->
-        <div class="widgetTagControl swiper mySwiper cu-slider-sw videoswiper">
+        <div class="widgetTagControl">
+            <div class="swiper mySwiper cu-slider-sw videoswiper">
             <div class="swiper-wrapper">
                 <?php foreach ( $settings['ah-slides'] as $k => $slide ): ?>
                 <div class="swiper-slide">
@@ -100,8 +101,9 @@ class SliderWidget extends Widget_Base {
                 </div>
                 <?php endforeach; ?>
             </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
         </div>
         <?php endif; ?>
 
