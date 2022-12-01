@@ -14,10 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Elementor\SliderWidget;
-use Elementor\DuraHeaderFormWidget;
-use Elementor\DuraHeaderLogoWidget;
-use Elementor\DuraOperationSliderWidget;
-use Elementor\DuraWhatsAppButton;
 use Elementor\Plugin;
 
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet', 99999);
@@ -42,8 +38,7 @@ class My_Elementor_Widgets
 
     protected static $instance = null;
 
-    public static function get_instance()
-    {
+    public static function get_instance(){
         if (!isset(static::$instance)) {
             static::$instance = new static;
         }
@@ -51,22 +46,17 @@ class My_Elementor_Widgets
         return static::$instance;
     }
 
-    protected function __construct()
-    {
+    protected function __construct(){
         require_once('slider-widget.php');
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
     }
 
-    public function register_widgets()
-    {
+    public function register_widgets(){
         Plugin::instance()->widgets_manager->register_widget_type(new SliderWidget());
     }
 
 }
-
-function my_elementor_init()
-{
+function my_elementor_init(){
     My_Elementor_Widgets::get_instance();
 }
-
 add_action('init', 'my_elementor_init');
